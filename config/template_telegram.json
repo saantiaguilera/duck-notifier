@@ -1,0 +1,4 @@
+{
+    "accessToken": "<your access token here>",
+    "chatId": "<the chat id you wish to notify to>"
+}
