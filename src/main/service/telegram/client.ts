@@ -8,6 +8,7 @@ interface HttpClient {
     post<T = unknown, R = HttpResponse<T>>(url: string, data?: unknown, config?: unknown): Promise<R>
 }
 
+// TelegramClient for sending messages to a given chatId
 export class TelegramClient {
 
     private httpClient: HttpClient

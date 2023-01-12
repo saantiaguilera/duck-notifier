@@ -11,6 +11,10 @@ interface HttpClient {
     get<T = any, R = HttpResponse<T>>(url: string, config?: unknown): Promise<R>
 }
 
+// RevistaPetroquimicaProvider acts as a datasource of news provided by the revista petroquimica
+// Note that Revista Petroquimica doesn't have an exposed API, hence we end up crawling
+// through the endpoints consumed by their frontend web.
+// Bear in mind this might stop working if they change the API schema.
 export class RevistaPetroquimicaProvider {
 
     private static readonly URL: string = "https://www.revistapetroquimica.com/feed/"
@@ -44,7 +48,7 @@ export class RevistaPetroquimicaProvider {
             return res
         } catch(err: unknown) {
             console.log(err)
-            return [] // timeout? TODO: Handle it
+            return [] // timeout? TODO: Handle timeouts / schema changes / !2XX responses
         }
     }
 }
